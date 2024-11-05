@@ -1,19 +1,15 @@
 <?php
+
 /**
  *------
  * BGA framework: Gregory Isabelli & Emmanuel Colin & BoardGameArena
- * gobeklitepe implementation : © <Your name here> <Your email address here>
+ * gobeklitepe implementation : © Mustafa Yilmaz musyilmaz.dev@gmail.com
  *
  * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
  * See http://en.boardgamearena.com/#!doc/Studio for more information.
  * -----
- *
- * Game.php
- *
- * This is the main file for your game logic.
- *
- * In this PHP file, you are going to defines the rules of the game.
  */
+
 declare(strict_types=1);
 
 namespace Bga\Games\gobeklitepe;
@@ -43,7 +39,7 @@ class Game extends \Table
             "my_second_global_variable" => 11,
             "my_first_game_variant" => 100,
             "my_second_game_variant" => 101,
-        ]);        
+        ]);
 
         self::$CARD_TYPES = [
             1 => [
@@ -146,13 +142,14 @@ class Game extends \Table
      *
      * The action method of state `nextPlayer` is called everytime the current game state is set to `nextPlayer`.
      */
-    public function stNextPlayer(): void {
+    public function stNextPlayer(): void
+    {
         // Retrieve the active player ID.
         $player_id = (int)$this->getActivePlayerId();
 
         // Give some extra time to the active player when he completed an action
         $this->giveExtraTime($player_id);
-        
+
         $this->activeNextPlayer();
 
         // Go to another gamestate
@@ -173,21 +170,21 @@ class Game extends \Table
      */
     public function upgradeTableDb($from_version)
     {
-//       if ($from_version <= 1404301345)
-//       {
-//            // ! important ! Use DBPREFIX_<table_name> for all tables
-//
-//            $sql = "ALTER TABLE DBPREFIX_xxxxxxx ....";
-//            $this->applyDbUpgradeToAllDB( $sql );
-//       }
-//
-//       if ($from_version <= 1405061421)
-//       {
-//            // ! important ! Use DBPREFIX_<table_name> for all tables
-//
-//            $sql = "CREATE TABLE DBPREFIX_xxxxxxx ....";
-//            $this->applyDbUpgradeToAllDB( $sql );
-//       }
+        //       if ($from_version <= 1404301345)
+        //       {
+        //            // ! important ! Use DBPREFIX_<table_name> for all tables
+        //
+        //            $sql = "ALTER TABLE DBPREFIX_xxxxxxx ....";
+        //            $this->applyDbUpgradeToAllDB( $sql );
+        //       }
+        //
+        //       if ($from_version <= 1405061421)
+        //       {
+        //            // ! important ! Use DBPREFIX_<table_name> for all tables
+        //
+        //            $sql = "CREATE TABLE DBPREFIX_xxxxxxx ....";
+        //            $this->applyDbUpgradeToAllDB( $sql );
+        //       }
     }
 
     /*
@@ -303,11 +300,10 @@ class Game extends \Table
 
         if ($state["type"] === "activeplayer") {
             switch ($state_name) {
-                default:
-                {
-                    $this->gamestate->nextState("zombiePass");
-                    break;
-                }
+                default: {
+                        $this->gamestate->nextState("zombiePass");
+                        break;
+                    }
             }
 
             return;
