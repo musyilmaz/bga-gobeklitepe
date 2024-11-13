@@ -41,15 +41,7 @@ class Game extends \Table
             "my_second_game_variant" => 101,
         ]);
 
-        self::$CARD_TYPES = [
-            1 => [
-                "card_name" => clienttranslate('Troll'), // ...
-            ],
-            2 => [
-                "card_name" => clienttranslate('Goblin'), // ...
-            ],
-            // ...
-        ];
+        require "materials.inc.php";
     }
 
     /**
@@ -233,6 +225,7 @@ class Game extends \Table
         // number of colors defined here must correspond to the maximum number of players allowed for the gams.
         $gameinfos = $this->getGameinfos();
         $default_colors = $gameinfos['player_colors'];
+
 
         foreach ($players as $player_id => $player) {
             // Now you can access both $player_id and $player array

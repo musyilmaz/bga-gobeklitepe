@@ -13,6 +13,8 @@ define([
   "dojo/_base/declare",
   "ebg/core/gamegui",
   "ebg/counter",
+  g_gamethemeurl + "modules/js/section.js",
+  g_gamethemeurl + "modules/js/gameboard.js",
 ], function (dojo, declare) {
   return declare("bgagame.gobeklitepe", ebg.core.gamegui, {
     constructor: function () {
@@ -39,6 +41,40 @@ define([
     setup: function (gamedatas) {
       console.log("Starting game setup");
 
+      document
+        .getElementById("game_play_area")
+        .insertAdjacentHTML("beforeend", `<div id="gameboard"></div>`);
+
+      for (const id in Array.from(Array(12).keys())) {
+        document
+          .getElementById("gameboard")
+          .insertAdjacentHTML(
+            "beforeend",
+            getSectionSVG(id, "red", "gray", 0.3)
+          );
+      }
+
+      for (const id in Array.from(Array(60).keys())) {
+        const vp = parseInt(id, 10) + 1;
+        document
+          .getElementById("gameboard")
+          .insertAdjacentHTML(
+            "beforeend",
+            `<div id="victory_point" data-vp="${vp}"></div>`
+          );
+      }
+
+      const gameboardSections = document.querySelectorAll("#gameboard_section");
+
+      for (const section of gameboardSections) {
+        const sectionId = section.getAttribute("data-section-id");
+
+        section.insertAdjacentHTML(
+          "beforeend",
+          `<div id="small_altar" data-altar-id="${sectionId}"></div>`
+        );
+      }
+
       // Example to add a div on the game area
       document
         .getElementById("game_play_area")
@@ -50,19 +86,19 @@ define([
         this.getPlayerPanelElement(player.id).insertAdjacentHTML(
           "beforeend",
           `
-                    <div id="player-counter-${player.id}">A player counter</div>
-                `
+            <div id="player-counter-${player.id}">A player counter</div>
+          `
         );
 
         // example of adding a div for each player
         document.getElementById("player-tables").insertAdjacentHTML(
           "beforeend",
           `
-                    <div id="player-table-${player.id}">
-                        <strong>${player.name}</strong>
-                        <div>Player zone content goes here</div>
-                    </div>
-                `
+            <div id="player-table-${player.id}" class="whiteblock player-table-wrapper">
+              <strong>${player.name}</strong>
+              <div id="player-table"></div>
+            </div>
+          `
         );
       });
 
@@ -72,6 +108,9 @@ define([
       this.setupNotifications();
 
       console.log("Ending game setup");
+
+      window.addEventListener("resize", gameboard.resize);
+      gameboard.resize();
     },
 
     ///////////////////////////////////////////////////

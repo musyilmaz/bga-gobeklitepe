@@ -7,3 +7,249 @@
  * See http://en.boardgamearena.com/#!doc/Studio for more information.
  * -----
  */
+
+:root {
+  --small_altar_height: 200px;
+  --small_altar_aspect_ratio: 0.52;
+}
+
+#gameboard {
+  position: relative;
+  margin: 20px auto;
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: 1;
+  background-image: url("img/main_board.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* VICTORY POINTS TRACK */
+#victory_point {
+  position: absolute;
+  transform-origin: center;
+  border: 4px solid black;
+  width: 40px;
+  height: 18px;
+  border-radius: 6px;
+}
+
+#victory_point[data-vp="16"] {
+  top: 71%;
+  left: 4.5%;
+  transform: rotate(62deg);
+}
+
+#victory_point[data-vp="17"] {
+  top: 66.4%;
+  left: 2.4%;
+  transform: rotate(68deg);
+}
+
+#victory_point[data-vp="18"] {
+  top: 61.7%;
+  left: 1%;
+  transform: rotate(74deg);
+}
+
+#victory_point[data-vp="19"] {
+  top: 56.7%;
+  left: -0.1%;
+  transform: rotate(80deg);
+}
+
+#victory_point[data-vp="20"] {
+  top: 51.6%;
+  left: -0.6%;
+  transform: rotate(87deg);
+}
+
+#victory_point[data-vp="21"] {
+  top: 46.5%;
+  left: -0.6%;
+  transform: rotate(94deg);
+}
+
+#victory_point[data-vp="22"] {
+  top: 41.5%;
+  left: -0.1%;
+  transform: rotate(100deg);
+}
+
+#victory_point[data-vp="23"] {
+  top: 36.5%;
+  left: 1%;
+  transform: rotate(105deg);
+}
+
+#victory_point[data-vp="24"] {
+  top: 31.6%;
+  left: 2.5%;
+  transform: rotate(110deg);
+}
+
+#victory_point[data-vp="25"] {
+  top: 26.9%;
+  left: 4.6%;
+  transform: rotate(117deg);
+}
+
+/* GAME BOARD SECTION PLACEMENTS - OUTER RING */
+#gameboard_section {
+  position: absolute;
+  transform-origin: center;
+}
+
+#gameboard_section[data-section-id="0"] {
+  top: 26.7%;
+  left: 2.2%;
+  transform: rotate(0deg);
+}
+
+#gameboard_section[data-section-id="1"] {
+  top: 10%;
+  left: 13%;
+  transform: rotate(30deg);
+}
+
+#gameboard_section[data-section-id="2"] {
+  top: 1%;
+  left: 30.5%;
+  transform: rotate(60deg);
+}
+
+#gameboard_section[data-section-id="3"] {
+  top: 2.2%;
+  left: 50%;
+  transform: rotate(90deg);
+}
+
+#gameboard_section[data-section-id="4"] {
+  top: 13%;
+  left: 66.7%;
+  transform: rotate(120deg);
+}
+
+#gameboard_section[data-section-id="5"] {
+  top: 30.5%;
+  left: 75.5%;
+  transform: rotate(150deg);
+}
+
+#gameboard_section[data-section-id="6"] {
+  top: 50%;
+  left: 74.5%;
+  transform: rotate(180deg);
+}
+
+#gameboard_section[data-section-id="7"] {
+  top: 66.5%;
+  left: 63.5%;
+  transform: rotate(210deg);
+}
+
+#gameboard_section[data-section-id="8"] {
+  top: 75.5%;
+  left: 46%;
+  transform: rotate(240deg);
+}
+
+#gameboard_section[data-section-id="9"] {
+  top: 74.5%;
+  left: 26.5%;
+  transform: rotate(270deg);
+}
+
+#gameboard_section[data-section-id="10"] {
+  top: 63.5%;
+  left: 10%;
+  transform: rotate(300deg);
+}
+
+#gameboard_section[data-section-id="11"] {
+  top: 46.3%;
+  left: 1.3%;
+  transform: rotate(330deg);
+}
+
+#small_altar {
+  position: absolute;
+  --altar-id: 0;
+  height: var(--small_altar_height);
+  aspect-ratio: var(--small_altar_aspect_ratio);
+  background-image: url("img/small_altars_sprite.png");
+  background-size: auto 100%;
+  --altar_width: calc(
+    var(--small_altar_height) * var(--small_altar_aspect_ratio)
+  );
+  background-position-x: calc(var(--altar_width) * var(--altar-id));
+  top: 20%;
+  left: 20%;
+}
+
+#small_altar[data-altar-id="0"] {
+  --altar-id: 0;
+}
+#small_altar[data-altar-id="1"] {
+  --altar-id: 1;
+}
+#small_altar[data-altar-id="2"] {
+  --altar-id: 2;
+}
+#small_altar[data-altar-id="3"] {
+  --altar-id: 3;
+}
+#small_altar[data-altar-id="4"] {
+  --altar-id: 4;
+}
+#small_altar[data-altar-id="5"] {
+  --altar-id: 5;
+}
+#small_altar[data-altar-id="6"] {
+  --altar-id: 6;
+}
+#small_altar[data-altar-id="7"] {
+  --altar-id: 7;
+}
+#small_altar[data-altar-id="8"] {
+  --altar-id: 8;
+}
+#small_altar[data-altar-id="9"] {
+  --altar-id: 9;
+}
+#small_altar[data-altar-id="10"] {
+  --altar-id: 10;
+}
+#small_altar[data-altar-id="11"] {
+  --altar-id: 11;
+}
+
+/* #section_altar_zone {
+  height: var(--small_altar_height);
+  aspect-ratio: var(--small_altar_aspect_ratio);
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  transform-origin: center;
+}
+
+#section_altar_zone[data-section-id="1"] {
+  top: 32.5%;
+  left: 15.5%;
+  transform: rotate(105deg);
+}
+
+#section_altar_zone[data-section-id="2"] {
+  top: 17%;
+  left: 27%;
+  transform: rotate(130deg);
+} */
+
+#player-table {
+  background-image: url("img/player_board.jpg");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  height: 500px;
+  width: auto;
+}
