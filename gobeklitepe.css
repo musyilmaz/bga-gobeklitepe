@@ -9,7 +9,7 @@
  */
 
 :root {
-  --small_altar_height: 200px;
+  --small_altar_height: 170px;
   --small_altar_aspect_ratio: 0.52;
 }
 
@@ -174,8 +174,34 @@
   transform: rotate(330deg);
 }
 
-#small_altar {
+.small_altar_container {
   position: absolute;
+  width: 80px;
+  height: 170px;
+  top: 23%;
+  left: 57.5%;
+  transform: rotate(105deg);
+}
+
+.tool_container {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 65%;
+  left: 47.5%;
+  transform: rotate(105deg);
+}
+.hunt_container {
+  position: absolute;
+  width: 200px;
+  height: 120px;
+  top: 35%;
+  left: 0%;
+  transform: rotate(105deg);
+}
+
+#small_altar {
+  cursor: pointer;
   --altar-id: 0;
   height: var(--small_altar_height);
   aspect-ratio: var(--small_altar_aspect_ratio);
@@ -185,8 +211,6 @@
     var(--small_altar_height) * var(--small_altar_aspect_ratio)
   );
   background-position-x: calc(var(--altar_width) * var(--altar-id));
-  top: 20%;
-  left: 20%;
 }
 
 #small_altar[data-altar-id="0"] {

@@ -50,7 +50,7 @@ define([
           .getElementById("gameboard")
           .insertAdjacentHTML(
             "beforeend",
-            getSectionSVG(id, "red", "gray", 0.3)
+            getSectionSVG(id, "transparent", "transparent", 1)
           );
       }
 
@@ -67,12 +67,34 @@ define([
       const gameboardSections = document.querySelectorAll("#gameboard_section");
 
       for (const section of gameboardSections) {
-        const sectionId = section.getAttribute("data-section-id");
+        const foreignObjectEl = section.firstElementChild;
 
-        section.insertAdjacentHTML(
+        foreignObjectEl.insertAdjacentHTML(
           "beforeend",
-          `<div id="small_altar" data-altar-id="${sectionId}"></div>`
+          `<div class="small_altar_container"></div>`
         );
+
+        foreignObjectEl.insertAdjacentHTML(
+          "beforeend",
+          `<div class="tool_container"></div>`
+        );
+
+        foreignObjectEl.insertAdjacentHTML(
+          "beforeend",
+          `<div class="hunt_container"></div>`
+        );
+      }
+
+      for (const section of gameboardSections) {
+        const sectionId = section.getAttribute("data-section-id");
+        const foreignObjectEl = section.firstElementChild;
+
+        const smallAltarContainerEl = foreignObjectEl.firstElementChild;
+
+        const smallAltarEl = `<div id="small_altar" data-altar-id="${sectionId}"></div>`;
+
+        dojo.place(smallAltarEl, smallAltarContainerEl);
+        this.addTooltip(smallAltarEl, _("test tooltip small altar"));
       }
 
       // Example to add a div on the game area

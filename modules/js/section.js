@@ -7,6 +7,7 @@ const getSectionSVG = function (id, borderColor, fillColor, fillOpacity) {
         height="210pt"
         viewBox="0, 0, 400,394"
         preserveAspectRatio="xMidYMid meet">
+        <foreignObject x="0" y="0" width="100%" height="100%"></foreignObject>
         <g>
             <path 
                 id="section-border"
